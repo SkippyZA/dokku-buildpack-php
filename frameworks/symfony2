@@ -26,7 +26,7 @@ case "$1" in
         fi
         ;;
     get-log-files)
-        echo "app/logs/prod.log" "app/logs/dev.log"
+        echo "app/logs/prod.log" 
         ;;
     compile)
         echo "-----> Setting up Symfony2 app"
