@@ -47,10 +47,10 @@ case "$1" in
         grep $CACHE_DIR/app/cache/prod -r . && error "Could find some '$CACHE_DIR' :/ "
 
 	status "Setting permissions"
-	chown -R 777 $BUILD_DIR/app/cache
-	chown -R 777 $CACHE_DIR/app/cache
-	chown -R 777 $BUILD_DIR/app/logs
-	chown -R 777 $CACHE_DIR/app/logs
+	chmod -R 777 $BUILD_DIR/app/cache
+	chmod -R 777 $CACHE_DIR/app/cache
+	chmod -R 777 $BUILD_DIR/app/logs
+	chmod -R 777 $CACHE_DIR/app/logs
 
         status "End"
         ;;
