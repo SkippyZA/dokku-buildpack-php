@@ -25,9 +25,6 @@ case "$1" in
             exit 1
         fi
         ;;
-    get-log-files)
-        echo "app/logs/prod.log" 
-        ;;
     compile)
         echo "-----> Setting up Symfony2 app"
         cp "$basedir/../conf/nginx/symfony2.conf.erb" "$BUILD_DIR/conf/site.conf.erb"
@@ -47,10 +44,10 @@ case "$1" in
         grep $CACHE_DIR/app/cache/prod -r . && error "Could find some '$CACHE_DIR' :/ "
 
 	status "Setting permissions"
-	chmod -R 777 $BUILD_DIR/app/cache
 	chmod -R 777 $CACHE_DIR/app/cache
-	chmod -R 777 $BUILD_DIR/app/logs
 	chmod -R 777 $CACHE_DIR/app/logs
+	chmod -R 777 /app/app/cache
+	chmod -R 777 /app/app/logs
 
         status "End"
         ;;
