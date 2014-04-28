@@ -39,6 +39,8 @@ case "$1" in
 
         status "Warmuping cache"
         rm -rf app/cache/*
+	chown -R 777 app/cache
+	chown -R 777 app/logs
         php app/console cache:warmup --env=prod --no-debug | indent
 
 
