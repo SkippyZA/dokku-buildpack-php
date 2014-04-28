@@ -46,6 +46,8 @@ case "$1" in
 	status "Setting permissions"
 	chmod -R 777 $CACHE_DIR/app/cache
 	chmod -R 777 $CACHE_DIR/app/logs
+
+	status "Clearing cache to fix permissions bug"
 	rm -rf $CACHE_DIR/app/cache/prod
 
         status "End"
