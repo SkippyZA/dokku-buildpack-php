@@ -39,14 +39,18 @@ case "$1" in
 
         status "Warmuping cache"
         rm -rf app/cache/*
-	chown -R 777 app/cache
-	chown -R 777 app/logs
         php app/console cache:warmup --env=prod --no-debug | indent
 
 
         status "Inplace replacment of $CACHE_DIR to $APP_DIR"
         find $CACHE_DIR/app/cache/prod -type f -exec sed -i "s@$CACHE_DIR@$APP_DIR@g" {} \; | indent
         grep $CACHE_DIR/app/cache/prod -r . && error "Could find some '$CACHE_DIR' :/ "
+
+	status "Setting permissions"
+	chown -R 777 $BUILD_DIR/app/cache
+	chown -R 777 $CACHE_DIR/app/cache
+	chown -R 777 $BUILD_DIR/app/logs
+	chown -R 777 $CACHE_DIR/app/logs
 
         status "End"
         ;;
